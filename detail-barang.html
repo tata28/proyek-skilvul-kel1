@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Detail Barang </title>
+
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/sidebar.css">
+
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- data table -->
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #f7f7f7;">
+    <div class="sidebar close h-100">
+        <div id="dismiss" class="mt-3" style="font-size: 30px;">
+            <i class='bx bx-menu'></i>
+        </div>
+
+        <!-- Logo di Sidebar-->
+        <!-- <div class="logo">
+            <p>Welcome</p>
+            <h6>Pacquita</h6>
+        </div> -->
+
+        <!-- SIDEBAR -->
+        <ul class="nav-links">
+            <li class="item">
+                <div class="iocn-link">
+                    <a href="home.html">
+                        <img src="assets/home.png">
+                        <span class="link_name">Home</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class="iocn-link">
+                    <a href="daftar-inventaris.html">
+                        <img src="assets/shipping.png">
+                        <span class="link_name">Daftar Inventaris</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="rekomendasi.html">
+                        <img src="assets/restock.png">
+                        <span class="link_name">Rekomendasi AI</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="transaksi.html">
+                        <img src="assets/stok-out.png">
+                        <span class="link_name">Barang Keluar</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="profil.html">
+                        <img src="assets/profile.png">
+                        <span class="link_name">Profil</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CONTENT-->
+    <div class="home-content py-3 h-100">
+        <div class="row mt-4">
+            <div class="judul col-10">
+                <h1>Detail Barang</h1>
+            </div>
+        </div>
+        <div class="table-container p-5 mt-3">
+            <div class="row px-4">
+                <form action="/detail_barang/save/{{data[0]}}" method=post>
+                    <!-- <div class="col-12 mt-3">
+                        <div class="form-group p-0">
+                            <div class="row">
+                                <div class="col-2 d-flex align-items-center ">
+                                    <p class="m-0">ID Barang</p>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" id="id" class="input-form form-control disabled"
+                                        aria-describedby="" readonly name="id" value="{{ data[0] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-12 mt-3">
+                        <div class="form-group p-0">
+                            <div class="row">
+                                <div class="col-2 d-flex align-items-center ">
+                                    <p class="m-0">Nama Barang</p>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" id="nama" class="input-form form-control disabled"
+                                        aria-describedby="" name="nama" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="form-group p-0">
+                            <div class="row">
+                                <div class="col-2 d-flex align-items-center ">
+                                    <p class="m-0">Kategori Barang</p>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" id="alamat" class="input-form form-control disabled"
+                                        aria-describedby="" name="banyak_total" value="" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="form-group p-0">
+                            <div class="row">
+                                <div class="col-2 d-flex align-items-center ">
+                                    <p class="m-0">Merk</p>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" id="alamat" class="input-form form-control disabled"
+                                        aria-describedby="" name="berat_satuan" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="form-group p-0">
+                            <div class="row">
+                                <div class="col-2 d-flex align-items-center ">
+                                    <p class="m-0">Berat satuan (kg) </p>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" id="alamat" class="input-form form-control disabled"
+                                        aria-describedby="" name="berat_satuan" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-12 mt-1">                   
+                        <div class="col-12 mt-3">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-10 d-flex justify-content-end">
+                                    <input type=submit value=Save id="save"
+                                        class="btn btn-outline-primary btn-sm px-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!-- tabel -->
+                <div class="col-12 mt-5">
+                    <div class="row">
+                        <div class="col-11 judul-tabel">
+                            <h6>Riwayat Penyetokan Barang</h6>
+                        </div>
+                        <div class="col-1 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary btn-sm px-3" data-toggle="modal"
+                                data-target="#addModal">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="tabelBarangPerPalet" class="table" style="width: 100%">
+                                <thead>
+                                    
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL TAMBAH BARANG PER PALET-->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Stok Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="tambahKategoriForm" action="/barang/penyimpanan/send_data ">
+                    <div class="modal-body row">
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-3 d-flex align-items-center ">
+                                        <p class="m-0">Banyak Barang</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="number" id="banyak_per_palet"
+                                            class="input-form form-control disabled" aria-describedby=""
+                                            name="banyak_per_palet">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-3 d-flex align-items-center ">
+                                        <p class="m-0">Kadaluwarsa</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="datetime-local" id="kadaluwarsa"
+                                            class="input-form form-control disabled" aria-describedby=""
+                                            name="kadaluwarsa">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" id="closeAddModal">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL EDIT BARANG PER PALET-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Penyimpanan Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="tambahKategoriForm" action="/barang/penyimpanan/send_data ">
+                    <div class="modal-body row">
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">ID Barang</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" id="edit_id_barang" class="input-form form-control disabled"
+                                            aria-describedby="" readonly name="edit_id_barang"
+                                            value="{{ data[0] }}{{data[1]}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">ID Palet </p>
+                                    </div>
+                                    <div class="col-10">
+                                        <select class="form-control form-select" name="edit_id_palet"
+                                            id="edit_id_palet">
+                                            {% for option2 in optionPalet %}
+                                            <option value="{{ option2[0] }}">{{ option2[0] }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Banyak Barang</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="number" id="edit_banyak_per_palet"
+                                            class="input-form form-control disabled" aria-describedby=""
+                                            name="edit_banyak_per_palet">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Kadaluwarsan</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="datetime-local" id="edit_kadaluwarsa"
+                                            class="input-form form-control disabled" aria-describedby=""
+                                            name="edit_kadaluwarsa" value="{{ data[0] }}{{data[1]}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" id="closeAddModal">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DELETE UNTUK BARANG PER PALET -->
+    <div id="deleteModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <form method="PUT" id="deleteAnggotaForm">
+                <div class="modal-content">
+                    <div class="modal-header flex-column">
+                        <h4 class="modal-title w-100">Apakah Anda yakin?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin akan menghapus barang ini? <b id="deleted"></b></p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" data-dismiss="modal" class="btn satu">Tidak</button>
+                        <button type="submit" class="btn dua btn-danger">Ya</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabelBarangPerPalet').DataTable({
+                "columns": [
+                    { "title": "Tanggal Restok" },
+                    { "title": "Jumlah" },
+                    { "title": "Kadaluwarsa" },
+                ],
+                "data": [
+                    ["14/03/2024", "5", "28/11/2029"],
+                    ["01/02/2024","10","24/08/2027"],
+                ]
+            });
+        });
+
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        let overlay = document.querySelector(".overlay");
+        let test = document.querySelector("#namaPerpus");
+
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            console.log("hai");
+            sidebar.classList.toggle("close");
+            overlay.classList.toggle("active");
+
+            if (test.classList.contains('d-none')) {
+                test.classList.remove('d-none');
+            }
+            else {
+                test.classList.add('d-none');
+            }
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#fotoPegawai').attr('src', e.target.result).height(150);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#tabelBarangPerPalet").on("click", "#buttonEdit", function () {
+            const id = $(this).attr("data-id")
+            console.log("berhasil manggil fungsi id :", id)
+            getDataBarangPerPalet(id)
+            editDataBarangPerPalet(id)
+        })
+
+        $("#tabelBarangPerPalet").on("click", "#buttonHapus", function () {
+            const id = $(this).attr("data-id")
+            hapusBarangPerPalet(id)
+        })
+
+        function getDataBarangPerPalet(id) {
+            console.log("id :", id)
+            $.ajax({
+                url: '/detail_penyimpanan/' + id,
+                dataType: "json",
+                type: "get",
+                contentType: "application/json",
+                success: function (res) {
+                    const d = res.data
+                    $("#edit_id_barang").val(d[1])
+                    $("#edit_id_palet").val(d[2])
+                    $("#edit_banyak_per_palet").val(d[3])
+
+                    // Create a Date object by parsing the input string
+                    const date = new Date(d[4]);
+
+                    // Get the individual date and time components
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const hours = String(date.getUTCHours()).padStart(2, '0');
+                    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+                    // Form the formatted date string
+                    const formattedDateString = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+                    console.log(formattedDateString); // Output: "2023-10-21T20:45"
+                    $("#edit_kadaluwarsa").val(formattedDateString)
+                    console.log("isi d[4]", d[4])
+                },
+                error: function (res) {
+                    console.log(res.message)
+                }
+            })
+        }
+
+        function editDataBarangPerPalet(id) {
+            $("#editModal").submit(function (e) {
+                e.preventDefault()
+                var id_barang = $('#edit_id_barang').val();
+                var id_palet = $('#edit_id_palet').val();
+                var banyak_per_palet = $('#edit_banyak_per_palet').val();
+                var kadaluwarsa = $('#edit_kadaluwarsa').val();
+                console.log("formatted kadaluwarsa : ", typeof kadaluwarsa)
+                $.ajax({
+                    url: "/detail_penyimpanan/save/" + id + "/" + id_barang + "/" + id_palet + "/" + banyak_per_palet + "/" + kadaluwarsa,
+                    data: { id_barang: id_barang, id_palet: id_palet, banyak_per_palet: banyak_per_palet, kadaluwarsa: kadaluwarsa },
+                    type: "POST",
+                    success: function (res) {
+                        console.log(res)
+                        console.log(id)
+                        document.location.href = "{{ url_for('barang') }}"
+                    },
+                    error: function (res) {
+                        console.log("Terjadi error")
+                        console.log(res)
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                })
+            })
+        }
+
+        function hapusBarangPerPalet(id) {
+            $.ajax({
+                url: '/detail_penyimpanan/' + id,
+                type: "get",
+                success: function (res) {
+                    console.log(res)
+                    const d = res.data
+                    console.log("isi d hapus", d)
+                    $("#deleteModal").submit(function (e) {
+                        e.preventDefault()
+
+                        $.ajax({
+                            url: "/delete_penyimpanan/" + id,
+                            data: { id: id },
+                            type: "POST",
+                            success: function (res) {
+                                console.log(res)
+                                console.log(id)
+                                document.location.href = "{{ url_for('barang') }}"
+                            },
+                            error: function (res) {
+                                console.log("Terjadi error")
+                                console.log(res)
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
+
+                        })
+                    })
+
+                },
+                error: function (res) {
+                    console.log(res.message)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+
+{{ end }}

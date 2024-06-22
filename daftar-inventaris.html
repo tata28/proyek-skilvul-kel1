@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Daftar Barang </title>
+
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/sidebar.css">
+
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+     <!-- data table -->
+     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
+     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+ 
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #f7f7f7;">
+    <div class="sidebar close h-100">
+        <div id="dismiss" class="mt-3" style="font-size: 30px;">
+            <i class='bx bx-menu'></i>
+        </div>
+
+        <!-- Logo di Sidebar-->
+        <!-- <div class="logo">
+            <p>Welcome</p>
+            <h6>Pacquita</h6>
+        </div> -->
+
+        <!-- SIDEBAR -->
+        <ul class="nav-links">
+            <li class="item">
+                <div class="iocn-link">
+                    <a href="home.html">
+                        <img src="assets/home.png">
+                        <span class="link_name">Home</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class="iocn-link">
+                    <a href="daftar-inventaris.html">
+                        <img src="assets/shipping.png">
+                        <span class="link_name">Daftar Inventaris</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="rekomendasi.html">
+                        <img src="assets/restock.png">
+                        <span class="link_name">Rekomendasi AI</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="transaksi.html">
+                        <img src="assets/stok-out.png">
+                        <span class="link_name">Barang Keluar</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
+                <div class=" iocn-link">
+                    <a href="profil.html">
+                        <img src="assets/profile.png">
+                        <span class="link_name">Profil</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CONTENT-->
+    <div class="home-content py-3 h-100">
+        <div class="row mt-4">
+            <div class="judul col-9">
+                <h1>Daftar Barang</h1>
+            </div>
+            <div class="d-flex justify-content-end col-3">
+                <button type="button" class="btn btn-primary" id="btn-modal" data-toggle="modal" data-target="#tambahDataModal" data-whatever="@getbootstrap">Tambah Data</button>
+            </div>
+        </div>
+        <div class="table-container p-5 mt-3">
+            <table id="tabelBarang" class="table" style="width: 100%">
+                <thead>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td> {{ row[0] }}</td>
+                        {% for cell in row[2:5] %}
+                        <td> {{ cell }} </td>
+                        {% endfor %}
+                        <td>
+                            <div class="row actions">
+                                <div class="search-btn col px-0">
+                                    <a href="detail-barang.html"><button type="button"
+                                            class="btn btn-primary px-0" data-toggle="modal" data-target="#editModal"
+                                            style="background-color:transparent;color:gray;border: none;"><i
+                                                class="bi bi-search"></i></button></a>
+                                </div>
+                                <div class="del-btn col px-0">
+                                    <button type="button" class="btn btn-primary px-0" data-toggle="modal"
+                                        data-target="#deleteModal" style="background-color:transparent;color:gray;border: none;"
+                                        id="buttonHapus" data-id="{{row[1]}}">
+                                        <img src="assets/del.png" style="height: 20px;"></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--MODAL TAMBAH READER-->
+    <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="tambahKategoriForm" action="/reader/add_new/send_data ">
+                    <div class="modal-body row">
+                        <div class="col-12 mt-3">
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Nama</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" id="uid_reader" class="input-form form-control disabled"
+                                            aria-describedby="" name="uid_reader">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Kategori</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <select class="form-control" name="id_gudang" id="id_gudang">
+                                            {% for option2 in optionGudang %}
+                                            <option value="{{ option2[0] }}">{{ option2[1] }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Merk</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" id="koor_x" class="input-form form-control disabled"
+                                            aria-describedby="" name="koor_x">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group p-0">
+                                <div class="row">
+                                    <div class="col-2 d-flex align-items-center ">
+                                        <p class="m-0">Berat</p>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" id="koor_y" class="input-form form-control disabled"
+                                            aria-describedby="" name="koor_y">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" id="closeAddModal">Tambahkan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DELETE -->
+    <div id="deleteModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <form method="PUT" id="deleteAnggotaForm">
+                <div class="modal-content">
+                    <div class="modal-header flex-column">
+                        <h4 class="modal-title w-100">Apakah Anda yakin?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin akan menghapus barang ini? <b id="deleted"></b></p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" data-dismiss="modal" class="btn satu">Tidak</button>
+                        <button type="submit" class="btn dua btn-danger">Ya</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabelBarang').DataTable({
+                "columns": [
+                    { "title": "No" },
+                    { "title": "Nama" },
+                    { "title": "Merk" },
+                    { "title": "Kategori" },
+                    { "title": "Berat (kg)" },
+                    { "title": "Jumlah Stok" },
+                    { "title": "Aksi" }
+                ],
+            });
+        });
+
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        let overlay = document.querySelector(".overlay");
+        let test = document.querySelector("#namaPerpus");
+
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            console.log("hai");
+            sidebar.classList.toggle("close");
+            overlay.classList.toggle("active");
+
+            if (test.classList.contains('d-none')) {
+                test.classList.remove('d-none');
+            }
+            else {
+                test.classList.add('d-none');
+            }
+        });
+
+        // $(document).ready(function () {
+        //     $('#tabelAnggota').DataTable({
+        //         "columns": [
+        //             { "width": "10%" },
+        //             { "width": "43%" },
+        //             { "width": "40%" },
+        //             { "width": "7%" }
+        //         ]
+        //     });
+        // });
+
+        $("#tabelBarang").on("click", "#buttonHapus", function () {
+            const id = $(this).attr("data-id")
+            hapusBarang(id)
+        })
+
+        function hapusBarang(id) {
+            $.ajax({
+                url: '/detail_barang/' + id,
+                type: "get",
+                success: function (res) {
+                    console.log(res)
+                    const d = res.data
+                    console.log("isi d hapus", d)
+                    $("#deleted").html(d)
+
+                    $("#deleteModal").submit(function (e) {
+                        e.preventDefault()
+
+                        $.ajax({
+                            url: "/delete_barang/" + id,
+                            data: { id: id },
+                            type: "POST",
+                            success: function (res) {
+                                console.log(res)
+                                console.log(id)
+                                document.location.href = "{{ url_for('barang') }}"
+                            },
+                            error: function (res) {
+                                console.log("Terjadi error")
+                                console.log(res)
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
+
+                        })
+                    })
+
+                },
+                error: function (res) {
+                    console.log(res.message)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+
+{{ end }}

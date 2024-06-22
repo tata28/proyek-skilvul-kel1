@@ -12,6 +12,10 @@ p, a, .form-label, .login-box .btn{
     font-size: 13px;
 }
 
+.home p, .modal p, #btn-modal, .btn-success, .table{
+    font-size: 14px;
+}
+
 .login-box hr{
     color: #B3ADAD;
     width: 100%;
@@ -33,5 +37,50 @@ p, a, .form-label, .login-box .btn{
 #login-btn{
     background-color:#2564AD ;
     color: white;
+}
+
+.form-control:valid,
+.form-select:valid {
+    background-color: #f7f7f7;
+    /* height:35px; */
+    box-shadow: none;
+    border: 1px solid #DED9D9;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+.table-container {
+    background-color: white;
+    border: 1px solid #ebe5e5;
+    border-radius: 3px;
+}
+
+.judul h1 {
+    font-size: 30px;
+    color: #73879C;
+    font-weight: 600;
+}
+
+.judul-tabel h6, .judul-tabel h5 {
+    font-weight: 600;
+    color: #73879C;
+}
+
+.home-content {
+    height: 100vh;
+    padding-left: 20vh;
+    padding-right: 10vh;
+    padding-top: 4vh;
+    background-color: #f7f7f7;
+}
+
+/* button */
+#btn-modal{
+    height:35px;
+    background-color: #2564AD;
+    border: #2564AD;
 }
 
