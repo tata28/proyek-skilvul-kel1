@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Profil Saya </title>
+    <title> Detail Barang </title>
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sidebar.css">
@@ -18,10 +18,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-     <!-- data table -->
-     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
-     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
- 
+    <!-- data table -->
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -46,25 +48,27 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body style="background-color: #f7f7f7;">
+<body>
     <div class="sidebar close h-100">
         <div id="dismiss" class="mt-3" style="font-size: 30px;">
             <i class='bx bx-menu'></i>
         </div>
 
-        <!-- Logo di Sidebar-->
-        <!-- <div class="logo">
-            <p>Welcome</p>
-            <h6>Pacquita</h6>
-        </div> -->
-
         <!-- SIDEBAR -->
         <ul class="nav-links">
             <li class="item">
+                <div class=" iocn-link">
+                    <a href="transaksi.html">
+                        <img src="assets/stok-out.png">
+                        <span class="link_name">Transaksi Warung</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
                 <div class="iocn-link">
                     <a href="home.html">
-                        <img src="assets/home.png">
-                        <span class="link_name">Home</span>
+                        <img src="assets/dashboard.png">
+                        <span class="link_name">Laporan Warung</span>
                     </a>
                 </div>
             </li>
@@ -80,15 +84,7 @@
                 <div class=" iocn-link">
                     <a href="rekomendasi.html">
                         <img src="assets/restock.png">
-                        <span class="link_name">Rekomendasi AI</span>
-                    </a>
-                </div>
-            </li>
-            <li class="item">
-                <div class=" iocn-link">
-                    <a href="transaksi.html">
-                        <img src="assets/stok-out.png">
-                        <span class="link_name">Barang Keluar</span>
+                        <span class="link_name">Rekomendasi Restok</span>
                     </a>
                 </div>
             </li>
@@ -96,7 +92,7 @@
                 <div class=" iocn-link">
                     <a href="profil.html">
                         <img src="assets/profile.png">
-                        <span class="link_name">Profil</span>
+                        <span class="link_name">Profil Saya</span>
                     </a>
                 </div>
             </li>
@@ -106,24 +102,69 @@
     <!-- CONTENT-->
     <div class="home-content py-3 h-100">
         <div class="row mt-4">
-            <div class="judul col-9">
+            <div class="judul col-10">
                 <h1>Profil Saya</h1>
             </div>
         </div>
-        
+        <div class="table-container shadow-sm p-5 mt-3">
+            <div class="row px-4">
+                <div class="col-12">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Nama </p>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="input-form form-control" aria-describedby="" name="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Email</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="email" class="input-form form-control" aria-describedby="" name="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Password</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="password" class="input-form form-control" aria-describedby="" name="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Nama Bisnis</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="input-form form-control" aria-describedby="" name="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-   
 
     <div class="overlay"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#tabelBarang').DataTable();
-        });
-
         let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {
             arrow[i].addEventListener("click", (e) => {
@@ -150,61 +191,6 @@
             }
         });
 
-        // $(document).ready(function () {
-        //     $('#tabelAnggota').DataTable({
-        //         "columns": [
-        //             { "width": "10%" },
-        //             { "width": "43%" },
-        //             { "width": "40%" },
-        //             { "width": "7%" }
-        //         ]
-        //     });
-        // });
-
-        $("#tabelBarang").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarang(id)
-        })
-
-        function hapusBarang(id) {
-            $.ajax({
-                url: '/detail_barang/' + id,
-                type: "get",
-                success: function (res) {
-                    console.log(res)
-                    const d = res.data
-                    console.log("isi d hapus", d)
-                    $("#deleted").html(d)
-
-                    $("#deleteModal").submit(function (e) {
-                        e.preventDefault()
-
-                        $.ajax({
-                            url: "/delete_barang/" + id,
-                            data: { id: id },
-                            type: "POST",
-                            success: function (res) {
-                                console.log(res)
-                                console.log(id)
-                                document.location.href = "{{ url_for('barang') }}"
-                            },
-                            error: function (res) {
-                                console.log("Terjadi error")
-                                console.log(res)
-                            },
-                            cache: false,
-                            contentType: false,
-                            processData: false
-
-                        })
-                    })
-
-                },
-                error: function (res) {
-                    console.log(res.message)
-                }
-            })
-        }
     </script>
 </body>
 

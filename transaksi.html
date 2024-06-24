@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Barang Keluar </title>
+    <title> Transaksi Warung </title>
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sidebar.css">
@@ -46,25 +46,27 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body style="background-color: #f7f7f7;">
+<body>
     <div class="sidebar close h-100">
         <div id="dismiss" class="mt-3" style="font-size: 30px;">
             <i class='bx bx-menu'></i>
         </div>
 
-        <!-- Logo di Sidebar-->
-        <!-- <div class="logo">
-            <p>Welcome</p>
-            <h6>Pacquita</h6>
-        </div> -->
-
         <!-- SIDEBAR -->
         <ul class="nav-links">
             <li class="item">
+                <div class=" iocn-link">
+                    <a href="transaksi.html">
+                        <img src="assets/stok-out.png">
+                        <span class="link_name">Transaksi Warung</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
                 <div class="iocn-link">
                     <a href="home.html">
-                        <img src="assets/home.png">
-                        <span class="link_name">Home</span>
+                        <img src="assets/dashboard.png">
+                        <span class="link_name">Laporan Warung</span>
                     </a>
                 </div>
             </li>
@@ -80,15 +82,7 @@
                 <div class=" iocn-link">
                     <a href="rekomendasi.html">
                         <img src="assets/restock.png">
-                        <span class="link_name">Rekomendasi AI</span>
-                    </a>
-                </div>
-            </li>
-            <li class="item">
-                <div class=" iocn-link">
-                    <a href="transaksi.html">
-                        <img src="assets/stok-out.png">
-                        <span class="link_name">Barang Keluar</span>
+                        <span class="link_name">Rekomendasi Restok</span>
                     </a>
                 </div>
             </li>
@@ -96,7 +90,7 @@
                 <div class=" iocn-link">
                     <a href="profil.html">
                         <img src="assets/profile.png">
-                        <span class="link_name">Profil</span>
+                        <span class="link_name">Profil Saya</span>
                     </a>
                 </div>
             </li>
@@ -107,9 +101,40 @@
     <div class="home-content py-3 h-100">
         <div class="row mt-4">
             <div class="judul col-9">
-                <h1>Barang Keluar</h1>
+                <h1>Transaksi Baru</h1>
             </div>
+            <div class="table-container shadow-sm p-5 mt-3">
+                <div class="col-12">
+                    <div class="judul-tabel">
+                        <h6></h6>
+                    </div>
+                </div>
+                <div class="col-12 mt-2">
+                    <ul class="nav nav-tabs" id="tabTransaksi" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Rekam Daftar Barang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pilih Barang</a>
+                        </li>
+                    </ul>
+                
+                    <!-- Tab panes -->
+                    <div class="tab-content shadow-sm" id="kontenTabTransaksi">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3>Content for Tab 1</h3>
+                            <p>This is the content for the first tab.</p>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3>Content for Tab 2</h3>
+                            <p>This is the content for the second tab.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
         </div>
+       
         
     </div>
 

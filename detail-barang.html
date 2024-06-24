@@ -48,25 +48,27 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body style="background-color: #f7f7f7;">
+<body>
     <div class="sidebar close h-100">
         <div id="dismiss" class="mt-3" style="font-size: 30px;">
             <i class='bx bx-menu'></i>
         </div>
 
-        <!-- Logo di Sidebar-->
-        <!-- <div class="logo">
-            <p>Welcome</p>
-            <h6>Pacquita</h6>
-        </div> -->
-
         <!-- SIDEBAR -->
         <ul class="nav-links">
             <li class="item">
+                <div class=" iocn-link">
+                    <a href="transaksi.html">
+                        <img src="assets/stok-out.png">
+                        <span class="link_name">Transaksi Warung</span>
+                    </a>
+                </div>
+            </li>
+            <li class="item">
                 <div class="iocn-link">
                     <a href="home.html">
-                        <img src="assets/home.png">
-                        <span class="link_name">Home</span>
+                        <img src="assets/dashboard.png">
+                        <span class="link_name">Laporan Warung</span>
                     </a>
                 </div>
             </li>
@@ -82,15 +84,7 @@
                 <div class=" iocn-link">
                     <a href="rekomendasi.html">
                         <img src="assets/restock.png">
-                        <span class="link_name">Rekomendasi AI</span>
-                    </a>
-                </div>
-            </li>
-            <li class="item">
-                <div class=" iocn-link">
-                    <a href="transaksi.html">
-                        <img src="assets/stok-out.png">
-                        <span class="link_name">Barang Keluar</span>
+                        <span class="link_name">Rekomendasi Restok</span>
                     </a>
                 </div>
             </li>
@@ -98,7 +92,7 @@
                 <div class=" iocn-link">
                     <a href="profil.html">
                         <img src="assets/profile.png">
-                        <span class="link_name">Profil</span>
+                        <span class="link_name">Profil Saya</span>
                     </a>
                 </div>
             </li>
@@ -114,85 +108,68 @@
         </div>
         <div class="table-container p-5 mt-3">
             <div class="row px-4">
-                <form action="/detail_barang/save/{{data[0]}}" method=post>
-                    <!-- <div class="col-12 mt-3">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">ID Barang</p>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" id="id" class="input-form form-control disabled"
-                                        aria-describedby="" readonly name="id" value="{{ data[0] }}">
-                                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Nama Barang</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" id="nama" class="input-form form-control disabled"
+                                    aria-describedby="" name="nama" value="">
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Kategori Barang</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                    aria-describedby="" name="banyak_total" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Merk</p>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                    aria-describedby="" name="berat_satuan" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Berat satuan (kg) </p>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                    aria-describedby="" name="berat_satuan" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-12 mt-1">
                     <div class="col-12 mt-3">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">Nama Barang</p>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" id="nama" class="input-form form-control disabled"
-                                        aria-describedby="" name="nama" value="">
-                                </div>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-10 d-flex justify-content-end">
+                                <input type=submit value=Save id="save" class="btn btn-outline-primary btn-sm px-3">
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-3">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">Kategori Barang</p>
-                                </div>
-                                <div class="col-10">
-                                    <input type="number" id="alamat" class="input-form form-control disabled"
-                                        aria-describedby="" name="banyak_total" value="" >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-3">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">Merk</p>
-                                </div>
-                                <div class="col-10">
-                                    <input type="number" id="alamat" class="input-form form-control disabled"
-                                        aria-describedby="" name="berat_satuan" value="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-3">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">Berat satuan (kg) </p>
-                                </div>
-                                <div class="col-10">
-                                    <input type="number" id="alamat" class="input-form form-control disabled"
-                                        aria-describedby="" name="berat_satuan" value="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-12 mt-1">                   
-                        <div class="col-12 mt-3">
-                            <div class="row">
-                                <div class="col-2"></div>
-                                <div class="col-10 d-flex justify-content-end">
-                                    <input type=submit value=Save id="save"
-                                        class="btn btn-outline-primary btn-sm px-3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
+                </div>
 
                 <!-- tabel -->
                 <div class="col-12 mt-5">
@@ -211,7 +188,7 @@
                         <div class="col-12">
                             <table id="tabelBarangPerPalet" class="table" style="width: 100%">
                                 <thead>
-                                    
+
                                 </thead>
                                 <tbody>
                                 </tbody>
@@ -391,7 +368,7 @@
                 ],
                 "data": [
                     ["14/03/2024", "5", "28/11/2029"],
-                    ["01/02/2024","10","24/08/2027"],
+                    ["01/02/2024", "10", "24/08/2027"],
                 ]
             });
         });

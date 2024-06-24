@@ -9,7 +9,7 @@
 }
 
 p, a, .form-label, .login-box .btn{
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .home p, .modal p, #btn-modal, .btn-success, .table{
@@ -74,7 +74,8 @@ p, a, .form-label, .login-box .btn{
     padding-left: 20vh;
     padding-right: 10vh;
     padding-top: 4vh;
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
+    background-color: white;
 }
 
 /* button */
@@ -82,5 +83,58 @@ p, a, .form-label, .login-box .btn{
     height:35px;
     background-color: #2564AD;
     border: #2564AD;
+}
+
+#btn-generate{
+    width: 100%;
+    background-color: #2564AD;
+    border: none;
+}
+
+/* tab transaksi */
+nav > .nav.nav-tabs{
+    border: none;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+
+}
+
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+    border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+{
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #e74c3c ;
+}
+
+.tab-content{
+    background-color: white;
+    line-height: 25px;
+    padding:30px 25px;
+    border-radius: 10px;
+    
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+border: none;
+    background: #e74c3c;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
 }
 
