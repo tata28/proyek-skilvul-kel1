@@ -164,8 +164,8 @@
                                         <p class="m-0">Nama</p>
                                     </div>
                                     <div class="col-10">
-                                        <input type="text" id="uid_reader" class="input-form form-control disabled"
-                                            aria-describedby="" name="uid_reader">
+                                        <input type="text" id="" class="input-form form-control disabled"
+                                            aria-describedby="" name="">
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                                         <p class="m-0">Kategori</p>
                                     </div>
                                     <div class="col-10">
-                                        <select class="form-control" name="id_gudang" id="id_gudang">
+                                        <select class="form-control" name="" id="">
                                             {% for option2 in optionGudang %}
                                             <option value="{{ option2[0] }}">{{ option2[1] }}</option>
                                             {% endfor %}
@@ -189,8 +189,8 @@
                                         <p class="m-0">Merk</p>
                                     </div>
                                     <div class="col-10">
-                                        <input type="text" id="koor_x" class="input-form form-control disabled"
-                                            aria-describedby="" name="koor_x">
+                                        <input type="text" id="" class="input-form form-control "
+                                            aria-describedby="" name="">
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +200,8 @@
                                         <p class="m-0">Berat</p>
                                     </div>
                                     <div class="col-10">
-                                        <input type="text" id="koor_y" class="input-form form-control disabled"
-                                            aria-describedby="" name="koor_y">
+                                        <input type="text" id="" class="input-form form-control"
+                                            aria-describedby="" name="">
                                     </div>
                                 </div>
                             </div>
@@ -291,51 +291,6 @@
         //         ]
         //     });
         // });
-
-        $("#tabelBarang").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarang(id)
-        })
-
-        function hapusBarang(id) {
-            $.ajax({
-                url: '/detail_barang/' + id,
-                type: "get",
-                success: function (res) {
-                    console.log(res)
-                    const d = res.data
-                    console.log("isi d hapus", d)
-                    $("#deleted").html(d)
-
-                    $("#deleteModal").submit(function (e) {
-                        e.preventDefault()
-
-                        $.ajax({
-                            url: "/delete_barang/" + id,
-                            data: { id: id },
-                            type: "POST",
-                            success: function (res) {
-                                console.log(res)
-                                console.log(id)
-                                document.location.href = "{{ url_for('barang') }}"
-                            },
-                            error: function (res) {
-                                console.log("Terjadi error")
-                                console.log(res)
-                            },
-                            cache: false,
-                            contentType: false,
-                            processData: false
-
-                        })
-                    })
-
-                },
-                error: function (res) {
-                    console.log(res.message)
-                }
-            })
-        }
     </script>
 </body>
 

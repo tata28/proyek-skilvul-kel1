@@ -20,10 +20,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-     <!-- data table -->
-     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
-     <link rel="stylesheet" href="/DataTables/datatables.css" href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
- 
+    <!-- data table -->
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
+    <link rel="stylesheet" href="/DataTables/datatables.css"
+        href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -105,61 +107,63 @@
             <div class="judul col-9">
                 <h1>Rekomendasi Restok</h1>
             </div>
-            <div class="table-container col-12 mt-3 p-5 shadow-sm">
-                <div class="row">
-                    <div class="col-12 judul-tabel">
-                        <h6>Rekomendasi spesial untuk perayaan tertentu</h6>
-                    </div>
-                    <div class="col-12 mt-4">
-                        <div class="form-group p-0">
-                            <div class="row">
-                                <div class="col-2 d-flex align-items-center ">
-                                    <p class="m-0">Pilih situasi Anda</p>
-                                </div>
-                                <div class="col-10">
-                                    <select class="form-select form-control" id="uid_tag" aria-label="Default select example" name="id_tag">
-                                        {% for option in optionTag %}
-                                            <option value="{{option[0]}}" selected>{{ option[1] }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-3">
-                        <button type="button" class="btn btn-primary px-0" id="btn-generate">Generate Recommendations </button>
-                    </div>
+        </div>
+        <div class="table-container  p-5 mt-3 shadow-sm">
+            <div class="row">
+                <div class="col-12 judul-tabel">
+                    <h6>Rekomendasi spesial untuk perayaan tertentu</h6>
                 </div>
-            </div>
-
-            <!-- tabel -->
-            <div class="table-container p-5 mt-4 shadow-sm">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-11 judul-tabel">
-                            <h6>Daftar Rekomendasi Restok Barang</h6>
+                <div class="col-12 mt-4">
+                    <div class="form-group p-0">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center ">
+                                <p class="m-0">Pilih situasi Anda</p>
+                            </div>
+                            <div class="col-10">
+                                <select class="form-select form-control" id="uid_tag"
+                                    aria-label="Default select example" name="id_tag">
+                                    {% for option in optionTag %}
+                                    <option value="{{option[0]}}" selected>{{ option[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-3">
-                    <div class="row">
-                        <div class="col-12">
-                            <table id="tabelRekomendasi" class="table" style="width: 100%">
-                                <thead>
-                                    
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                    <button type="button" class="btn btn-primary px-0" id="btn-generate">Generate Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- tabel -->
+        <div class="table-container p-5 mt-4 shadow-sm">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-11 judul-tabel">
+                        <h6>Daftar Rekomendasi Restok Barang</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="row">
+                    <div class="col-12">
+                        <table id="tabelRekomendasi" class="table" style="width: 100%">
+                            <thead>
+
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
-   
+
 
     <div class="overlay"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -177,8 +181,8 @@
                     { "title": "Satuan" }
                 ],
                 "data": [
-                    ["1", "Keripik kentang","Chitato","Makanan ringan", "50","pcs"],
-                    ["2","Makaroni","Mamasuka","Makanan ringan","2","dus"],
+                    ["1", "Keripik kentang", "Chitato", "Makanan ringan", "50", "pcs"],
+                    ["2", "Makaroni", "Mamasuka", "Makanan ringan", "2", "dus"],
                 ]
             });
         });
@@ -220,50 +224,6 @@
         //     });
         // });
 
-        $("#tabelBarang").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarang(id)
-        })
-
-        function hapusBarang(id) {
-            $.ajax({
-                url: '/detail_barang/' + id,
-                type: "get",
-                success: function (res) {
-                    console.log(res)
-                    const d = res.data
-                    console.log("isi d hapus", d)
-                    $("#deleted").html(d)
-
-                    $("#deleteModal").submit(function (e) {
-                        e.preventDefault()
-
-                        $.ajax({
-                            url: "/delete_barang/" + id,
-                            data: { id: id },
-                            type: "POST",
-                            success: function (res) {
-                                console.log(res)
-                                console.log(id)
-                                document.location.href = "{{ url_for('barang') }}"
-                            },
-                            error: function (res) {
-                                console.log("Terjadi error")
-                                console.log(res)
-                            },
-                            cache: false,
-                            contentType: false,
-                            processData: false
-
-                        })
-                    })
-
-                },
-                error: function (res) {
-                    console.log(res.message)
-                }
-            })
-        }
     </script>
 </body>
 

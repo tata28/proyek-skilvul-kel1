@@ -115,7 +115,7 @@
                                 <p class="m-0">Nama Barang</p>
                             </div>
                             <div class="col-10">
-                                <input type="text" id="nama" class="input-form form-control disabled"
+                                <input type="text" id="nama" class="input-form form-control"
                                     aria-describedby="" name="nama" value="">
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                 <p class="m-0">Kategori Barang</p>
                             </div>
                             <div class="col-10">
-                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                <input type="number" id="" class="input-form form-control"
                                     aria-describedby="" name="banyak_total" value="">
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <p class="m-0">Merk</p>
                             </div>
                             <div class="col-10">
-                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                <input type="number" id="" class="input-form form-control disabled"
                                     aria-describedby="" name="berat_satuan" value="">
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                 <p class="m-0">Berat satuan (kg) </p>
                             </div>
                             <div class="col-10">
-                                <input type="number" id="alamat" class="input-form form-control disabled"
+                                <input type="number" id="" class="input-form form-control disabled"
                                     aria-describedby="" name="berat_satuan" value="">
                             </div>
                         </div>
@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <!--MODAL TAMBAH BARANG PER PALET-->
+    <!--MODAL TAMBAH STOK-->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -220,9 +220,9 @@
                                         <p class="m-0">Banyak Barang</p>
                                     </div>
                                     <div class="col-9">
-                                        <input type="number" id="banyak_per_palet"
-                                            class="input-form form-control disabled" aria-describedby=""
-                                            name="banyak_per_palet">
+                                        <input type="number" id=""
+                                            class="input-form form-control" aria-describedby=""
+                                            name="">
                                     </div>
                                 </div>
                             </div>
@@ -234,9 +234,9 @@
                                         <p class="m-0">Kadaluwarsa</p>
                                     </div>
                                     <div class="col-9">
-                                        <input type="datetime-local" id="kadaluwarsa"
-                                            class="input-form form-control disabled" aria-describedby=""
-                                            name="kadaluwarsa">
+                                        <input type="datetime-local" id=""
+                                            class="input-form form-control" aria-describedby=""
+                                            name="">
                                     </div>
                                 </div>
                             </div>
@@ -248,109 +248,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-
-    <!--MODAL EDIT BARANG PER PALET-->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Penyimpanan Barang</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="tambahKategoriForm" action="/barang/penyimpanan/send_data ">
-                    <div class="modal-body row">
-                        <div class="col-12 mt-3">
-                            <div class="form-group p-0">
-                                <div class="row">
-                                    <div class="col-2 d-flex align-items-center ">
-                                        <p class="m-0">ID Barang</p>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="text" id="edit_id_barang" class="input-form form-control disabled"
-                                            aria-describedby="" readonly name="edit_id_barang"
-                                            value="{{ data[0] }}{{data[1]}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="form-group p-0">
-                                <div class="row">
-                                    <div class="col-2 d-flex align-items-center ">
-                                        <p class="m-0">ID Palet </p>
-                                    </div>
-                                    <div class="col-10">
-                                        <select class="form-control form-select" name="edit_id_palet"
-                                            id="edit_id_palet">
-                                            {% for option2 in optionPalet %}
-                                            <option value="{{ option2[0] }}">{{ option2[0] }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="form-group p-0">
-                                <div class="row">
-                                    <div class="col-2 d-flex align-items-center ">
-                                        <p class="m-0">Banyak Barang</p>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="number" id="edit_banyak_per_palet"
-                                            class="input-form form-control disabled" aria-describedby=""
-                                            name="edit_banyak_per_palet">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="form-group p-0">
-                                <div class="row">
-                                    <div class="col-2 d-flex align-items-center ">
-                                        <p class="m-0">Kadaluwarsan</p>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="datetime-local" id="edit_kadaluwarsa"
-                                            class="input-form form-control disabled" aria-describedby=""
-                                            name="edit_kadaluwarsa" value="{{ data[0] }}{{data[1]}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" id="closeAddModal">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DELETE UNTUK BARANG PER PALET -->
-    <div id="deleteModal" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <form method="PUT" id="deleteAnggotaForm">
-                <div class="modal-content">
-                    <div class="modal-header flex-column">
-                        <h4 class="modal-title w-100">Apakah Anda yakin?</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Apakah Anda yakin akan menghapus barang ini? <b id="deleted"></b></p>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" data-dismiss="modal" class="btn satu">Tidak</button>
-                        <button type="submit" class="btn dua btn-danger">Ya</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 
@@ -399,30 +296,6 @@
             }
         });
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#fotoPegawai').attr('src', e.target.result).height(150);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#tabelBarangPerPalet").on("click", "#buttonEdit", function () {
-            const id = $(this).attr("data-id")
-            console.log("berhasil manggil fungsi id :", id)
-            getDataBarangPerPalet(id)
-            editDataBarangPerPalet(id)
-        })
-
-        $("#tabelBarangPerPalet").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarangPerPalet(id)
-        })
-
         function getDataBarangPerPalet(id) {
             console.log("id :", id)
             $.ajax({
@@ -452,72 +325,6 @@
                     console.log(formattedDateString); // Output: "2023-10-21T20:45"
                     $("#edit_kadaluwarsa").val(formattedDateString)
                     console.log("isi d[4]", d[4])
-                },
-                error: function (res) {
-                    console.log(res.message)
-                }
-            })
-        }
-
-        function editDataBarangPerPalet(id) {
-            $("#editModal").submit(function (e) {
-                e.preventDefault()
-                var id_barang = $('#edit_id_barang').val();
-                var id_palet = $('#edit_id_palet').val();
-                var banyak_per_palet = $('#edit_banyak_per_palet').val();
-                var kadaluwarsa = $('#edit_kadaluwarsa').val();
-                console.log("formatted kadaluwarsa : ", typeof kadaluwarsa)
-                $.ajax({
-                    url: "/detail_penyimpanan/save/" + id + "/" + id_barang + "/" + id_palet + "/" + banyak_per_palet + "/" + kadaluwarsa,
-                    data: { id_barang: id_barang, id_palet: id_palet, banyak_per_palet: banyak_per_palet, kadaluwarsa: kadaluwarsa },
-                    type: "POST",
-                    success: function (res) {
-                        console.log(res)
-                        console.log(id)
-                        document.location.href = "{{ url_for('barang') }}"
-                    },
-                    error: function (res) {
-                        console.log("Terjadi error")
-                        console.log(res)
-                    },
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                })
-            })
-        }
-
-        function hapusBarangPerPalet(id) {
-            $.ajax({
-                url: '/detail_penyimpanan/' + id,
-                type: "get",
-                success: function (res) {
-                    console.log(res)
-                    const d = res.data
-                    console.log("isi d hapus", d)
-                    $("#deleteModal").submit(function (e) {
-                        e.preventDefault()
-
-                        $.ajax({
-                            url: "/delete_penyimpanan/" + id,
-                            data: { id: id },
-                            type: "POST",
-                            success: function (res) {
-                                console.log(res)
-                                console.log(id)
-                                document.location.href = "{{ url_for('barang') }}"
-                            },
-                            error: function (res) {
-                                console.log("Terjadi error")
-                                console.log(res)
-                            },
-                            cache: false,
-                            contentType: false,
-                            processData: false
-
-                        })
-                    })
-
                 },
                 error: function (res) {
                     console.log(res.message)
