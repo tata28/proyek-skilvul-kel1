@@ -1,0 +1,216 @@
+body{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 54px;
+    background: linear-gradient(180deg, rgba(120, 166, 209, 0.20) 2.27%, rgba(255, 255, 255, 0.20) 29.1%);
+}
+
+
+.header{
+    display: inline-flex;
+    padding: 65px 187px;
+    align-items: center;
+    gap: 698px;
+}
+
+.content{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.content h2{
+    padding: 0 187px;
+    width: 1116px;
+    color: #003584;
+    text-align: center;
+    font-family: Syne;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.content p{
+    color: #003584;
+    text-align: center;
+    font-family: Syne;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.content .lanjut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+}
+
+.content2{
+    display: inline-flex;
+    padding: 0px 88px;
+    align-items: flex-start;
+}
+
+.content2 .selamat{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 90px;
+}
+
+.content2 .selamat p{
+    color: #5D86A3;
+    text-align: center;
+    font-family: "Space Mono";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.content2 .selamat h2{
+    display: flex;
+    width: 598px;
+    height: 208px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.tentang{
+    display: inline-flex;
+    padding: 0px 160px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.tentang h2{
+    color: #5D86A3;
+    text-align: center;
+    font-family: "Space Mono";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.tentang .deskripsi{
+    display: flex;
+    align-items: flex-start;
+    gap: 160px;
+}
+
+.tentang .deskripsi p{
+    display: flex;
+    width: 480px;
+    height: 105px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fitur{
+    display: inline-flex;
+    padding: 0px 80px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 25px;
+}
+
+.fitur h2{
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.fitur .isi{
+    display: flex;
+    align-items: flex-start;
+    gap: 52px;
+}
+
+.fitur .isi .deskripsi{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 31px;
+}
+
+.fitur .isi .deskripsi p{
+    font-weight:bold
+}
+
+.footer{
+    display: inline-flex;
+    padding: 99px 218px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 59px;
+    background: #81ACD4;
+}
+
+.footer .content{
+    display: flex;
+    align-items: flex-start;
+    gap: 318px;
+}
+
+.footer .content .list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer .content .list p{
+    width: 96px;
+    color: #FFFDFD;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}    
+
+.footer .copyright{
+    display: flex;
+    align-items: center;
+    gap: 531px;
+}
+
+.footer .isi{
+    width: 401px;
+    color: #FFFDFD;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.footer .logo{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
