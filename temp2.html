@@ -3,27 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Daftar Barang </title>
+    <title> Transaksi Warung </title>
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sidebar.css">
-    <link rel="icon" href="assets/logo.png" type="image/x-icon" />
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- data table -->
-    <link rel="stylesheet" href="/DataTables/datatables.css"
-        href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
-    <link rel="stylesheet" href="/DataTables/datatables.css"
-        href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <!-- Include DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <!-- Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Include Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -104,107 +106,41 @@
     <div class="home-content py-3 h-100">
         <div class="row mt-4">
             <div class="judul col-9">
-                <h1>Laporan Warung</h1>
+                <h1>Transaksi Baru</h1>
             </div>
         </div>
+        <div class="table-container shadow-sm p-3 pb-4 mt-3" style="background-color: #f5f5f5;">
+            <div class="col-12 mt-2 mb-2">
+                <ul class="nav nav-tabs" id="tabTransaksi" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true"><b>Rekam Daftar Barang</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false"><b>Pilih Barang</b></a>
+                    </li>
+                </ul>
 
-    </div>
-
-
-
-    <div class="overlay"></div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#tabelBarang').DataTable();
-        });
-
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-                arrowParent.classList.toggle("showMenu");
-            });
-        }
-        let sidebar = document.querySelector(".sidebar");
-        let sidebarBtn = document.querySelector(".bx-menu");
-        let overlay = document.querySelector(".overlay");
-        let test = document.querySelector("#namaPerpus");
-
-        console.log(sidebarBtn);
-        sidebarBtn.addEventListener("click", () => {
-            console.log("hai");
-            sidebar.classList.toggle("close");
-            overlay.classList.toggle("active");
-
-            if (test.classList.contains('d-none')) {
-                test.classList.remove('d-none');
-            }
-            else {
-                test.classList.add('d-none');
-            }
-        });
-
-        // $(document).ready(function () {
-        //     $('#tabelAnggota').DataTable({
-        //         "columns": [
-        //             { "width": "10%" },
-        //             { "width": "43%" },
-        //             { "width": "40%" },
-        //             { "width": "7%" }
-        //         ]
-        //     });
-        // });
-
-        $("#tabelBarang").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarang(id)
-        })
-
-        function hapusBarang(id) {
-            $.ajax({
-                url: '/detail_barang/' + id,
-                type: "get",
-                success: function (res) {
-                    console.log(res)
-                    const d = res.data
-                    console.log("isi d hapus", d)
-                    $("#deleted").html(d)
-
-                    $("#deleteModal").submit(function (e) {
-                        e.preventDefault()
-
-                        $.ajax({
-                            url: "/delete_barang/" + id,
-                            data: { id: id },
-                            type: "POST",
-                            success: function (res) {
-                                console.log(res)
-                                console.log(id)
-                                document.location.href = "{{ url_for('barang') }}"
-                            },
-                            error: function (res) {
-                                console.log("Terjadi error")
-                                console.log(res)
-                            },
-                            cache: false,
-                            contentType: false,
-                            processData: false
-
-                        })
-                    })
-
-                },
-                error: function (res) {
-                    console.log(res.message)
-                }
-            })
-        }
-    </script>
-</body>
-
-</html>
-
-{{ end }}
+                <!-- Tab panes -->
+                <div class="tab-content shadow-sm py-2 pt-3" id="kontenTabTransaksi">
+                    <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-9">
+                                <p style="font-size: 13px;color: grey;">
+                                    Petunjuk penggunaan : <br>
+                                    1. Tekan tombol <img src="assets/voice.png" alt="Rekam" style="height: 15px;"> untuk
+                                    merekam semua barang yang dibeli. <br>
+                                    2. Sebutkan nama semua barang yang dibeli. <br>
+                                    3. Ketika selesai, tekan tombol <img src="assets/stop.png" alt="Stop"
+                                        style="height: 15px;"> <br>
+                                    4. Jika diperlukan, Anda dapat memutar ulang rekaman suara. <br>
+                                    5. Sesuaikan kuantitas barang yang dibeli pada tabel Daftar Barang dalam Transaksi
+                                    di bawah ini.
+                                </p>
+                            </div>
+                            <div class="col-3 d-flex align-items-center">
+                                <div class="row ">
+                                    <div class="col-4 text-right">
+                                        <button type="button" class="btn btn-primary px-0"
+                                            style="background-color:transparent

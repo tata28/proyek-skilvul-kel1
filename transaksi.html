@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sidebar.css">
+    <link rel="icon" href="assets/logo.png" type="image/x-icon" />
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -15,14 +16,15 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- data table -->
-    <link rel="stylesheet" href="/DataTables/datatables.css"
-        href="{{ url_for('static', filename='DataTables/datatables.css')}}" />
-    <link rel="stylesheet" href="/DataTables/datatables.css"
-        href="{{ url_for('static', filename='DataTables/datatables.js')}}" />
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Include Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
 
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -46,6 +48,7 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -106,56 +109,227 @@
                 <h1>Transaksi Baru</h1>
             </div>
         </div>
-        <div class="table-container shadow-sm p-3 pb-4 mt-3">
-            <div class="col-12">
-                <div class="judul-tabel">
-                    <h6></h6>
-                </div>
-            </div>
+        <div class="table-container shadow-sm p-3 pb-4 mt-3" style="background-color: #f5f5f5;">
             <div class="col-12 mt-2 mb-2">
                 <ul class="nav nav-tabs" id="tabTransaksi" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="home" aria-selected="true">Rekam Daftar Barang</a>
+                            aria-controls="home" aria-selected="true"><b>Rekam Daftar Barang</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                            aria-controls="profile" aria-selected="false">Pilih Barang</a>
+                            aria-controls="profile" aria-selected="false"><b>Pilih Barang</b></a>
                     </li>
                 </ul>
 
                 <!-- Tab panes -->
-                <div class="tab-content shadow-sm" id="kontenTabTransaksi">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <button id="recordButton" class="btn btn-primary">Record</button>
-                        <button id="stopButton" class="btn btn-danger" disabled>Stop</button>
-                        <p>Time: <span id="timer">00:00</span></p>
-                        <audio id="audioPlayback" controls style="display:none;"></audio>
+                <div class="tab-content shadow-sm py-2 pt-3" id="kontenTabTransaksi">
+                    <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-9">
+                                <p style="font-size: 13px;color: grey;">
+                                    Petunjuk penggunaan : <br>
+                                    1. Tekan tombol <img src="assets/voice.png" alt="Rekam" style="height: 15px;"> untuk
+                                    merekam semua barang yang dibeli. <br>
+                                    2. Sebutkan nama semua barang yang dibeli. <br>
+                                    3. Ketika selesai, tekan tombol <img src="assets/stop.png" alt="Stop"
+                                        style="height: 15px;"> <br>
+                                    4. Jika diperlukan, Anda dapat memutar ulang rekaman suara. <br>
+                                    5. Sesuaikan kuantitas barang yang dibeli pada tabel Daftar Barang dalam Transaksi
+                                    di bawah ini.
+                                </p>
+                            </div>
+                            <div class="col-3 d-flex align-items-center">
+                                <div class="row ">
+                                    <div class="col-4 text-right">
+                                        <button type="button" class="btn btn-primary px-0"
+                                            style="background-color:transparent;color:gray;border: none;"
+                                            id="recordButton">
+                                            <img src="assets/voice.png" style="height:60px"></button>
+                                    </div>
+                                    <div class="col-4 text-right d-flex align-items-center">
+                                        <h6>Time: <span id="timer">00:00</span></h6>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <button type="button" class="btn btn-primary px-0"
+                                            style="background-color:transparent;color:gray;border: none;"
+                                            id="stopButton">
+                                            <img src="assets/stop.png" style="height:60px"></button>
+                                    </div>
+                                    <audio id="audioPlayback" controls style="display:none;"></audio>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- end tab Rekam Daftar Barang -->
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h3>Content for Tab 2</h3>
-                        <p>This is the content for the second tab.</p>
+                        <div class="row">
+                            <div class="col-12 mt-4">
+                                <div class="form-group p-0">
+                                    <div class="row">
+                                        <div class="col-12 d-flex align-items-center ">
+                                            <p class="m-0">Pilih barang yang dibeli</p>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <select class="form-select form-control" id="listProduct"
+                                                aria-label="Default select example" name="id_tag"
+                                                style="width: 100%;height: 38px;">
+                                                <option value="1" data-category="Category 1" data-price="100.00">Barang
+                                                    1</option>
+                                                <option value="2" data-category="Category 2" data-price="200.00">Barang
+                                                    2</option>
+                                                <option value="3" data-category="Category 3" data-price="300.00">Barang
+                                                    3</option>
+                                                <option value="4" data-category="Category 4" data-price="400.00">Barang
+                                                    4</option>
+                                                <option value="5" data-category="Category 5" data-price="500.00">Barang
+                                                    5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end tab Pilih Barang -->
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="table-container shadow-sm p-5 mt-3">
-            <div class="col-12">
-                <div class="judul-tabel">
-                    <h6>Daftar Barang dalam Transaksi</h6>
-                </div>
+                <!-- end of tab panes -->
             </div>
         </div>
 
+        <div class="table-container shadow-sm p-5 mt-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="judul-tabel">
+                        <h6>Daftar Barang dalam Transaksi</h6>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <table id="daftarBarangTransaksi" class="table" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Kuantitas</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="row">
+                        <div class="col-4 text-right">Total jumlah barang yang dibeli : </div>
+                        <div class="col-8" id="totalQuantity"> </div>
+                        <div class="col-4 text-right">Total harga : </div>
+                        <div class="col-8" id="totalPrice"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="overlay"></div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tabelBarang').DataTable();
+            $('#listProduct').select2({
+                placeholder: 'Ketik lalu pilih nama barang yang dibeli',
+                allowClear: true
+            });
+
+             // Function to calculate and update total quantity
+            function updateTotalQuantity() {
+                var totalQuantity = 0;
+                $('#daftarBarangTransaksi tbody tr').each(function () {
+                    var quantity = parseInt($(this).find('td:nth-child(5) .quantity').text()) || 0;
+                    totalQuantity += quantity;
+                    console.log("yg diambil dr tabel : ", parseInt($(this).find('td:nth-child(5)').text()))
+                    console.log("quantity : ", quantity)
+                });
+                
+                console.log(totalQuantity)
+                $('#totalQuantity').text(totalQuantity);
+            }
+
+            function updateTotalPrice(){
+                var totalPrice = 0;
+                $('#daftarBarangTransaksi tbody tr').each(function () {
+                    var price = parseInt($(this).find('td:nth-child(6) ').text()) || 0;
+                    totalPrice += price;
+                    console.log("yg diambil dr tabel : ", parseInt($(this).find('td:nth-child(6)').text()))
+                });
+                
+                console.log(totalPrice)
+                $('#totalPrice').text(totalPrice);
+            }
+
+            // Call updateTotalQuantity initially to set the initial total
+            updateTotalQuantity();
+            updateTotalPrice();
+
+            $('#listProduct').on('select2:select', function (e) {
+                var selectedOption = $(e.params.data.element);
+                var id = selectedOption.val();
+                var name = selectedOption.text();
+                var category = selectedOption.data('category');
+                var price = selectedOption.data('price');
+                console.log("berhasil ganti pilihan")
+                addToTable(id, name, category, price);
+            });
+
+            function addToTable(id, name, category, price) {
+                var table = $('#daftarBarangTransaksi tbody');
+                var quantity = 1
+                var total = quantity * price
+                var row = `<tr>
+                            <td>${id}</td>
+                            <td>${name}</td>
+                            <td>${category}</td>
+                            <td>${price}</td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary subtract-btn">-</button>
+                                <span class="quantity">${quantity}</span>
+                                <button class="btn btn-sm btn-secondary add-btn">+</button>
+                            </td>
+                            <td><span class="total">${total}</span></td>
+                        </tr>`;
+                table.append(row);
+                updateTotalQuantity();
+                updateTotalPrice();
+            }
+
+            // Event delegation to handle add and subtract buttons
+            $('#daftarBarangTransaksi').on('click', '.add-btn', function () {
+                var $row = $(this).closest('tr');
+                var $quantitySpan = $row.find('.quantity');
+                var quantity = parseInt($quantitySpan.text()) + 1;
+                $quantitySpan.text(quantity);
+                updateTotal($row);
+            });
+
+            $('#daftarBarangTransaksi').on('click', '.subtract-btn', function () {
+                var $row = $(this).closest('tr');
+                var $quantitySpan = $row.find('.quantity');
+                var quantity = parseInt($quantitySpan.text());
+                if (quantity > 1) {
+                    quantity -= 1;
+                    $quantitySpan.text(quantity);
+                    updateTotal($row);
+                }
+            });
+
+            function updateTotal($row) {
+                var price = parseFloat($row.find('td:nth-child(4)').text());
+                var quantity = parseInt($row.find('.quantity').text());
+                var total = price * quantity;
+                $row.find('.total').text(total.toFixed(2));
+                updateTotalQuantity();
+                updateTotalPrice();
+            }
+                // end of document ready function
         });
 
         let arrow = document.querySelectorAll(".arrow");
@@ -183,11 +357,6 @@
                 test.classList.add('d-none');
             }
         });
-
-        $("#tabelBarang").on("click", "#buttonHapus", function () {
-            const id = $(this).attr("data-id")
-            hapusBarang(id)
-        })
 
         function hapusBarang(id) {
             $.ajax({
@@ -221,7 +390,6 @@
 
                         })
                     })
-
                 },
                 error: function (res) {
                     console.log(res.message)
@@ -239,7 +407,6 @@
         const stopButton = document.getElementById('stopButton');
         const timerDisplay = document.getElementById('timer');
         const audioPlayback = document.getElementById('audioPlayback');
-
 
         navigator.mediaDevices.getUserMedia({ audio: true })
             .then(stream => {
@@ -271,6 +438,21 @@
                     const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
                     audioPlayback.src = URL.createObjectURL(blob);
                     audioPlayback.style.display = 'block';
+
+                    // Create a download link
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = URL.createObjectURL(blob);
+                    downloadLink.download = 'recorded_audio.ogg'; // Specify filename here
+
+                    // Append the download link to the document body
+                    document.body.appendChild(downloadLink);
+
+                    // Programmatically trigger the download
+                    downloadLink.click();
+
+                    // Clean up: remove the download link from the DOM
+                    document.body.removeChild(downloadLink);
+
                     chunks = [];
                 };
             });
@@ -288,7 +470,6 @@
             stopButton.disabled = true;
             playButton.disabled = false;
         });
-
 
         function updateTimer() {
             const elapsedTime = Date.now() - startTime;
