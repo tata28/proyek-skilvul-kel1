@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     display: inline-flex;
     flex-direction: column;
@@ -8,19 +12,20 @@ body{
 
 
 .header{
-    display: inline-flex;
-    padding: 65px 187px;
+    width: 1441px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 16px;
+    padding-right: 0px;
+    justify-content: flex-start;
     align-items: center;
-    gap: 457px;
+    gap: 524px;
+    display: inline-flex;
 }
 
 .header img{
-    width: 312px;
-    height: 79px;
-    flex-shrink: 0;
-
-    border-radius: 75px;
-    background: url(<path-to-image>) lightgray -7px -120px / 102.244% 403.797% no-repeat;
+    width: 500px;
+    height: 110px;
 }
 
 .header .nav{
@@ -254,11 +259,20 @@ body{
 }
 
 .fitur{
-    display: inline-flex;
-    padding: 0px 80px;
+    display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 25px;
+    align-items: flex-start;
+    gap: 54px;
+    align-self: stretch;
+}
+
+.fitur .h2{
+    display: flex;
+    padding: 0px 300px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
 }
 
 .fitur h2{
@@ -272,8 +286,15 @@ body{
 
 .fitur .isi{
     display: flex;
+    justify-content: center;
     align-items: flex-start;
     gap: 52px;
+    align-self: stretch;
+}
+
+.fitur .isi img{
+    width: 640px;
+    height: 760px;
 }
 
 .fitur .isi .deskripsi{
@@ -281,6 +302,7 @@ body{
     flex-direction: column;
     align-items: flex-start;
     gap: 31px;
+    width: 588px;
 }
 
 .fitur .isi .deskripsi p{
