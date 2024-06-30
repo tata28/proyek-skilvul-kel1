@@ -311,7 +311,7 @@ body{
 
 .footer{
     display: flex;
-    padding: 99px 218px;
+    padding: 52px 218px;
     flex-direction: column;
     align-items: flex-start;
     gap: 59px;
